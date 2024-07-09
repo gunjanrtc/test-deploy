@@ -9,12 +9,6 @@ steps:
             value: "blueprints"
           - label: "Authn2 service"
             value: "authn2"
-
+  - wait
   - label: "testing service name in sh file"
-    command: |
-      if [[ "${SERVICE[@]}" =~ "blueprints" ]]; then
-        bash $PIPELINE_SCRIPT
-        echo "Service name is 'blueprints'"
-      else
-        echo "Skipping step as 'blueprints' service is not selected"
-      fi
+    command: echo "test"; buildkite-agent meta-data get SERVICE

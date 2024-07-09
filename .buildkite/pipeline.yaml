@@ -22,4 +22,4 @@ steps:
       done
 
   - label: "testing service name in sh file"
-    command: bash $PIPELINE_SCRIPT get_service_details
+    command: bash $PIPELINE_SCRIPT

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-SERVICE=$(buildkite-agent meta-data get SERVICE)
+SERVICES=$(buildkite-agent meta-data get SERVICE)
 
 
 
@@ -14,5 +14,10 @@ get_service_details() {
     echo $service_name
 }
 
-if [[ "$1" == "get_service_details"]]; then
-    get_service_details $SERVICE region
+for SERVICE in "${SERVICES[@]}"; do
+    echo "Fetching details for service: $SERVICE"
+    # Example: Get region detail for each service
+    region=$(get_service_details "$SERVICE" "region")
+    echo "Region: $region"
+    # Add more operations as needed for each service
+done

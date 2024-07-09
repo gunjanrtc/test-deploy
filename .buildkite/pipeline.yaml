@@ -10,8 +10,12 @@ steps:
             value: "authn2"
 
   - wait
-  
-  - label: "testing service name in sh file"
+
+  - label: "testing blueprint service"
     key: "blueprints"
     command: echo "blueprint command"
-    if: (key:SERVICE == blueprints)
+    if: buildkite:env:SERVICE == "blueprints"
+  
+  - label: "Testing authn2 service"
+    command: echo "authn2 command"
+    if: buildkite:env:SERVICE == "authn2"

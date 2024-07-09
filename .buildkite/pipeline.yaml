@@ -16,4 +16,4 @@ steps:
   - label: "testing service"
     commands: 
       - SERVICE=$(buildkite-agent meta-data get SERVICE)
-      - echo $SERVICE
+      - echo "service are $SERVICE"

@@ -16,9 +16,9 @@ steps:
 
   - label: "testing service name in sh file"
     command: |
-      if [[ "$SERVICE_NAMES" == *"blueprints"* ]]; then
+      if [[ "$SERVICE" == *"blueprints"* ]]; then
         bash $PIPELINE_SCRIPT
-        echo "$SERVICE_NAMES"
+        echo "$SERVICE"
       else
         echo "Skipping step as service name is not 'blueprints'"
       fi

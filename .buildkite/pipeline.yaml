@@ -12,10 +12,11 @@ steps:
   - wait
 
   - label: "testing blueprint service"
-    key: "blueprints"
-    command: echo "blueprint command"
-    if: buildkite:env:SERVICE == "blueprints"
+    command: |
+      if [[ "$$(buildkite-agent meta-data get SERVICE)" == "blueprints" ]]; then
+        echo "blueprint service testing"
+      fi
   
   - label: "Testing authn2 service"
     command: echo "authn2 command"
-    if: buildkite:env:SERVICE == "authn2"
+    # if: buildkite:env:SERVICE == "authn2"

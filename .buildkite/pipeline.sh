@@ -17,10 +17,6 @@ echo "$SERVICE"
 #     echo "in function : $service_name"
 # }
 
-for SERVICE in "${SERVICES[@]}"; do
-    echo "Fetching details for service: $SERVICE"
-    # Example: Get region detail for each service
-    region=$(get_service_details "$SERVICE" "region")
-    echo "Region: $region"
-    # Add more operations as needed for each service
+for service_name in $SERVICE; do
+    echo "service name = $service_name"
 done

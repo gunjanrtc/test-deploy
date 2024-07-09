@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-SERVICES=$(buildkite-agent meta-data get SERVICE)
-
+# SERVICES=$(buildkite-agent meta-data get SERVICE)
+SERVICES=("blueprints" "authn2")
 
 
 # echo $SERVICE

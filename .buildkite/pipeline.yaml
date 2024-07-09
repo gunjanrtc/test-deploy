@@ -16,6 +16,6 @@ steps:
 
   - label: "testing service name in sh file"
     command: |
-      - bash $PIPELINE_SCRIPT
-      - echo "$SERVICE_NAMES"
+      bash $PIPELINE_SCRIPT
+      echo "$SERVICE_NAMES"
     

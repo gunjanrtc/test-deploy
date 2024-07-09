@@ -1,0 +1,16 @@
+env:
+  PIPELINE_SCRIPT: src/automation/deployment/pipeline.sh
+
+steps:
+  - block: "Run Config"
+    fields:
+      - select: "Services"
+        key: "SERVICE"
+        multiple: true
+        options:
+          - label: "Blueprint service "
+            value: "blueprints"
+          - label: "Authn2 service"
+            value: "authn2"
+      - label: "testing service"
+        commands:

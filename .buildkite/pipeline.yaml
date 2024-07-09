@@ -15,7 +15,7 @@ steps:
 
 
   - label: "testing service name in sh file"
-    command: |
+    command: bash |
       if [[ "$SERVICE" == *"blueprints"* ]]; then
         bash $PIPELINE_SCRIPT
         echo "$SERVICE"

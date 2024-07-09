@@ -2,7 +2,7 @@
 
 SERVICE=$(buildkite-agent meta-data get SERVICE)
 
-echo "Service is $SERVICE"
+echo "$SERVICE"
 # SERVICES=("blueprints" "authn2")
 # echo "Next Service is $SERVICES"
 

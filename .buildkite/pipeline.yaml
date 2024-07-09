@@ -11,4 +11,4 @@ steps:
             value: "authn2"
   - wait
   - label: "testing service name in sh file"
-    command: echo "test"; buildkite-agent meta-data get SERVICE
+    command: echo "test"; buildkite-agent meta-data get "SERVICE"

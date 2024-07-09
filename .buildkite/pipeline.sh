@@ -13,3 +13,6 @@ get_service_details() {
     jq -r --arg service "$service_name" --arg detail "$detail" '.[$service][$detail]'  $json_file
     echo $service_name
 }
+
+if [[ "$1" == "get_service_details"]]; then
+    get_service_details $SERVICE region

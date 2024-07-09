@@ -18,4 +18,4 @@ steps:
       - echo "service are $SERVICE"
 
   - label: "testing service name in sh file"
-    command: bash $PIPELINE_SCRIPT
+    command: bash $PIPELINE_SCRIPT get_service_details

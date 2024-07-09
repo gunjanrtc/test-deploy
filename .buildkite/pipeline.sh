@@ -4,7 +4,7 @@ SERVICES=$(buildkite-agent meta-data get SERVICE)
 
 
 
-echo $SERVICE
+# echo $SERVICE
 json_file="C:\\buildkite-agent\\builds\\RTC-DLLA48-1\\rtctek\\test-deploy\\.buildkite\\services.json"
 
 get_service_details() {

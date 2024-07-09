@@ -1,6 +1,3 @@
-env:
-  PIPELINE_SCRIPT: C:\\buildkite-agent\\builds\\RTC-DLLA48-1\\rtctek\\test-deploy\\.buildkite\\pipeline.sh
-
 steps:
   - block: "Run Config"
     fields:
@@ -8,18 +5,16 @@ steps:
         key: "SERVICE"
         multiple: true
         options:
-          - label: "Blueprint service "
+          - label: "Blueprint service"
             value: "blueprints"
           - label: "Authn2 service"
             value: "authn2"
 
-
   - label: "testing service name in sh file"
     command: |
-      if [["${SERVICE[@]}" =~ "blueprints"]]; then
+      if [[ "${SERVICE[@]}" =~ "blueprints" ]]; then
         bash $PIPELINE_SCRIPT
         echo "Service name is 'blueprints'"
       else
-        echo "Skipping step as blueprints is not selected"
+        echo "Skipping step as 'blueprints' service is not selected"
       fi
-    

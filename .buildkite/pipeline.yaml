@@ -16,7 +16,7 @@ steps:
   - label: "testing service name in yml"
     command: |
       SERVICES=$(buildkite-agent meta-data get SERVICE)
-      echo "Services are: $SERVICES"
+      echo "Services are: %SERVICES%"
       for SERVICE in $SERVICES; do
       echo "Fetching details for service: $SERVICE"
       done

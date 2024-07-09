@@ -3,8 +3,8 @@
 SERVICE=$(buildkite-agent meta-data get SERVICE)
 
 echo "Service is $SERVICE"
-SERVICES=("blueprints" "authn2")
-echo "Next Service is $SERVICES"
+# SERVICES=("blueprints" "authn2")
+# echo "Next Service is $SERVICES"
 
 
 # echo $SERVICE
@@ -17,10 +17,10 @@ echo "Next Service is $SERVICES"
 #     echo "in function : $service_name"
 # }
 
-# for SERVICE in "${SERVICES[@]}"; do
-#     echo "Fetching details for service: $SERVICE"
-#     # Example: Get region detail for each service
-#     region=$(get_service_details "$SERVICE" "region")
-#     echo "Region: $region"
-#     # Add more operations as needed for each service
-# done
+for SERVICE in "${SERVICES[@]}"; do
+    echo "Fetching details for service: $SERVICE"
+    # Example: Get region detail for each service
+    region=$(get_service_details "$SERVICE" "region")
+    echo "Region: $region"
+    # Add more operations as needed for each service
+done

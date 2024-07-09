@@ -13,7 +13,7 @@ steps:
           - label: "Authn2 service"
             value: "authn2"
 
-      - label: "testing service"
-        commands: 
-          - SERVICE=$(buildkite-agent meta-data get SERVICE)
-          - echo $SERVICE
+  - label: "testing service"
+    commands: 
+      - SERVICE=$(buildkite-agent meta-data get SERVICE)
+      - echo $SERVICE

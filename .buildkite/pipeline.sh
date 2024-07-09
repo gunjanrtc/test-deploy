@@ -11,7 +11,7 @@ get_service_details() {
     local service_name=$1
     local detail=$2
     jq -r --arg service "$service_name" --arg detail "$detail" '.[$service][$detail]'  $json_file
-    echo $service_name
+    echo "in function : $service_name"
 }
 
 for SERVICE in "${SERVICES[@]}"; do

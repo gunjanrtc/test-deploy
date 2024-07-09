@@ -15,5 +15,4 @@ steps:
 
   - label: "testing service"
     commands: 
-      - SERVICE=$(BUILDKITE_PLUGIN_INPUT_SERVICE)
-      - echo "service are $SERVICE"
+      - echo "service are $BUILDKITE_PLUGIN_INPUT_SERVICE"

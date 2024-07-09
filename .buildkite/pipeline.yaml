@@ -15,7 +15,7 @@ steps:
 
 
   - label: "testing service name in sh file"
-    command:t |
+    command: |
       if [[  "${SERVICE[@]}" =~ "blueprints"]]; then
         bash $PIPELINE_SCRIPT
         echo "Service name is 'blueprints'"

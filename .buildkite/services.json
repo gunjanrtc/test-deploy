@@ -1,0 +1,11 @@
+{
+    "blueprints": {
+      "region": "ap-south-1",
+      "image": "esper/blueprints/api/"
+    },
+    "authn2": {
+      "image": "esper/authn2-services/authn2/",
+      "region": "us-west-2"
+    }
+  }
+  

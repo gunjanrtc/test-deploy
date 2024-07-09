@@ -1,5 +1,5 @@
 env:
-  PIPELINE_SCRIPT: src/automation/deployment/pipeline.sh
+  PIPELINE_SCRIPT: C:\\buildkite-agent\\builds\\RTC-DLLA48-1\\rtctek\\test-deploy\\.buildkite\\pipeline.sh
 
 steps:
   - block: "Run Config"
@@ -12,5 +12,8 @@ steps:
             value: "blueprints"
           - label: "Authn2 service"
             value: "authn2"
+
       - label: "testing service"
-        commands:
+        commands: 
+          - SERVICE=$(buildkite-agent meta-data get SERVICE)
+          - echo $SERVICE

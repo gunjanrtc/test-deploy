@@ -13,13 +13,9 @@ steps:
           - label: "Authn2 service"
             value: "authn2"
 
-  # - label: "testing service name in yml"
-  #   command: |
-  #     SERVICES=$(buildkite-agent meta-data get SERVICE)
-  #     echo "Services are: %SERVICES%"
-  #     for SERVICE in $SERVICES; do
-  #     echo "Fetching details for service: $SERVICE"
-  #     done
 
   - label: "testing service name in sh file"
-    command: bash $PIPELINE_SCRIPT
+    command: |
+      - bash $PIPELINE_SCRIPT
+      - echo "$SERVICE_NAMES"
+    

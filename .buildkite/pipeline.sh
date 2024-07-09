@@ -1,22 +1,22 @@
 #!/usr/bin/env bash
 
-SERVICE=$(buildkite-agent meta-data get SERVICE)
+# Function to retrieve service names from Buildkite metadata
+get_service_names() {
+    local services=$(buildkite-agent meta-data get SERVICE)
+    echo "$services"
+}
 
-echo "$SERVICE"
-# SERVICES=("blueprints" "authn2")
-# echo "Next Service is $SERVICES"
+# Example usage of the function
+service_names=$(get_service_names)
 
+# Print service names for verification
+echo "Service names: $service_names"
 
-# echo $SERVICE
-# json_file="C:\\buildkite-agent\\builds\\RTC-DLLA48-1\\rtctek\\test-deploy\\.buildkite\\services.json"
-
-# get_service_details() {
-#     local service_name=$1
-#     local detail=$2
-#     jq -r --arg service "$service_name" --arg detail "$detail" '.[$service][$detail]'  $json_file
-#     echo "in function : $service_name"
-# }
-
-for service_name in $SERVICE; do
-    echo "service name = $service_name"
-done
+# Upload service names to Buildkite as pipeline metadata
+buildkite-agent pipeline upload <<EOF
+{
+  "env": {
+    "SERVICE_NAMES": "$service_names"
+  }
+}
+EOF

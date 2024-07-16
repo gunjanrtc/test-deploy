@@ -2,7 +2,7 @@ steps:
   - command: |
       echo "blueprint servicews"
     # label: ":hammer: Run Tests"
-    if: build.env('SERVICE') == 'blueprints'
+    if: build.env('SERVICE') =~ 'blueprints'
 
 
   - command: |

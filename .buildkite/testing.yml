@@ -2,10 +2,10 @@ steps:
   - command: |
       buildkite-agent meta-data get SERVICE
     label: ":hammer: Run Tests"
-    if: build.env.service == "blueprints"
+    if: SERVICE == "blueprints"
 
   - command: |
       buildkite-agent meta-data get SERVICE
       echo "running for authn2"
     label: ":hammer: Run Tests"
-    if: build.env.service == "authn2"
+    if: SERVICE == "authn2"

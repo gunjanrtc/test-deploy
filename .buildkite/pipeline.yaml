@@ -15,7 +15,6 @@ steps:
   - label: ":pipeline: Upload and run testing.yml"
     command: |
       echo "service=${SERVICE}" > service.env
-      cat service.env
       buildkite-agent pipeline upload C:\\buildkite-agent\\builds\\RTC-DLLA48-1\\rtctek\\test-deploy\\.buildkite\\testing.yml
     env:
       SERVICE: "${BUILDKITE_BUILD_ENV_SERVICE}"

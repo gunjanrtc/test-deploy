@@ -1,8 +1,7 @@
 steps:
   - command: |
-      buildkite-agent meta-data get SERVICE
       echo "blueprint servicews"
-    label: ":hammer: Run Tests"
+    # label: ":hammer: Run Tests"
     if: 'build.env("SERVICE") == "blueprints"'
 
 

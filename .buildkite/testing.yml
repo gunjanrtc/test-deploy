@@ -1,5 +1,6 @@
 steps:
   - command: |
+      buildkite-agent meta-data get SERVICE
       echo "blueprint servicews"
     label: ":hammer: Run Tests"
 

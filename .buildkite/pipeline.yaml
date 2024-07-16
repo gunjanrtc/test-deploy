@@ -17,5 +17,5 @@ steps:
       echo "RELEASE_TYPE=${SERVICE}" > service.env
       buildkite-agent pipeline upload C:\\buildkite-agent\\builds\\RTC-DLLA48-1\\rtctek\\test-deploy\\.buildkite\\testing.yml
     env:
-      SERVICE:"buildkite-agent meta data set ${SERVICE}""
+      SERVICE:buildkite-agent meta-data set ${SERVICE}
 

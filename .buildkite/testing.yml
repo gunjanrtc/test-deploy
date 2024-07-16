@@ -1,5 +1,5 @@
 steps:
   - command: |
-      buildkite-agent meta data get ${SERVICE}
+      buildkite-agent meta-data get ${SERVICE}
       echo "Running tests with service type: ${SERVICE}"
     label: ":hammer: Run Tests"

@@ -2,6 +2,7 @@ steps:
   - block: "Run Config"
     fields:
       - select: "Services"
+        multiple: "true"
         key: "SERVICE"
         options:
           - label: "Blueprint service"
@@ -11,12 +12,10 @@ steps:
 
   - wait
 
-  - label: "testing blueprint service"
+  - label: ":pipeline: Upload and run testing.yml"
     command: |
-      if [[ "$$(buildkite-agent meta-data get SERVICE)" == "blueprints" ]]; then
-        echo "blueprint service testing"
-      fi
-  
-  - label: "Testing authn2 service"
-    command: echo "authn2 command"
-    # if: buildkite:env:SERVICE == "authn2"
+      echo "RELEASE_TYPE=${SERVICE}" > service.env
+      buildkite-agent pipeline upload testing.yml
+    env:
+      SERVICE: "${SERVICE}" 
+

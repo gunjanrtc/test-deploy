@@ -1,0 +1,5 @@
+steps:
+  - command: |
+      source release_type.env
+      echo "Running tests with release type: ${RELEASE_TYPE}"
+    label: ":hammer: Run Tests"

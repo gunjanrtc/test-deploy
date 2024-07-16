@@ -9,15 +9,13 @@ steps:
             value: "blueprints"
           - label: "Authn2 service"
             value: "authn2"
-      command: |
-        echo "SERVICE=$SERVICE" >> .env
-        cat .env
 
   - wait
 
   - label: ":pipeline: Upload and run testing.yml"
     command: |
-      echo "RELEASE_TYPE=${SERVICE}" > service.env
+      echo "service=${SERVICE}" > service.env
+      cat service.env
       buildkite-agent pipeline upload C:\\buildkite-agent\\builds\\RTC-DLLA48-1\\rtctek\\test-deploy\\.buildkite\\testing.yml
     env:
       SERVICE: "${BUILDKITE_BUILD_ENV_SERVICE}"

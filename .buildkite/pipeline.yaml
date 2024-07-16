@@ -9,7 +9,10 @@ steps:
             value: "blueprints"
           - label: "Authn2 service"
             value: "authn2"
-
+    command: |
+      echo "SERVICE=$SERVICE" >> .env
+      cat .env
+      
   - wait
 
   - label: ":pipeline: Upload and run testing.yml"

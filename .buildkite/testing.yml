@@ -1,6 +1,6 @@
 steps:
   - command: |
-      SERVICES=buildkite-agent meta-data get SERVICE
+      buildkite-agent meta-data get SERVICE > SERVICES
     label: ":hammer: Run Tests"
     if: SERVICES == "blueprints"
 

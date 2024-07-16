@@ -2,11 +2,11 @@ steps:
   - command: |
       echo "blueprint servicews"
     # label: ":hammer: Run Tests"
-    if: 'build.env("SERVICE") == "blueprints"'
+    if: build.env('SERVICE') == 'blueprints'
 
 
   - command: |
       buildkite-agent meta-data get SERVICE
       echo "running for authn2"
     label: ":hammer: Run Tests"
-    if: 'build.env("SERVICE") == "authn2"'
+    if: build.env('SERVICE') != 'authn2'

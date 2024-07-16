@@ -1,5 +1,5 @@
 steps:
   - command: |
-      source release_type.env
-      echo "Running tests with release type: ${RELEASE_TYPE}"
+      builkdkite-agent meta data get ${SERVICE}
+      echo "Running tests with service type: ${SERVICE}"
     label: ":hammer: Run Tests"

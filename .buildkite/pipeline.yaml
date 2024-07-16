@@ -17,5 +17,5 @@ steps:
       echo "service=${SERVICE}" > service.env
       buildkite-agent pipeline upload C:\\buildkite-agent\\builds\\RTC-DLLA48-1\\rtctek\\test-deploy\\.buildkite\\testing.yml
     env:
-      SERVICE: "authn2"
+      SERVICES: "authn2"
 

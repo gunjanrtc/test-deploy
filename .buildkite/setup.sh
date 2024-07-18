@@ -1,7 +1,7 @@
 #!/bin/bash
-
+echo "In setup.sh"
 SERVICE_NAME=$1
-
+echo "service name : $SERVICE_NAME"
 case "$SERVICE_NAME" in
   "blueprints")
     echo "Executing commands for Service A..."

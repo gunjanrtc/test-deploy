@@ -15,4 +15,6 @@ steps:
             value: "authn2"
 
   - label: "Execute Commands for Selected Service"
-    command: $SETUP_SCRIPT "$(buildkite-agent meta-data get SERVICE)"
+    command: 
+      - $SETUP_SCRIPT "$(buildkite-agent meta-data get SERVICE)"
+      - echo "next step"

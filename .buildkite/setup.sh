@@ -26,7 +26,8 @@
 
 
 echo "In setup.sh"
-while IFS= read -r SERVICE_NAME; do
+SERVICE_NAME=$(buildkite-agent meta-data get SERVICE)
+while IFS= read -r $SERVICE_NAME; do
   echo "service name : $SERVICE_NAME"
   case "$SERVICE_NAME" in
     "blueprints")

@@ -1,30 +1,20 @@
-version: '5'
-description: 'Example pipeline'
-
-inputs:
-  - id: "selected_services"
-    description: "Choose services (comma-separated)"
-    required: true
-    schema:
-      type: string
-
 env:
-  SERVICES_LIST: ""
+  SETUP_SCRIPT: C:\\buildkite-agent\\builds\\RTC-DLLA48-1\\rtctek\\test-deploy\\.buildkite\\setup.sh
+  PIPELINE_SCRIPT: C:\\buildkite-agent\\builds\\RTC-DLLA48-1\\rtctek\\test-deploy\\.buildkite\\pipeline.sh
 
 steps:
-  - label: "Process Selected Services"
-    command: |
-      #!/bin/bash
-      IFS=', ' read -ra SERVICES <<< "$(buildkite-agent meta-data get selected_services)"
-      
-      # Convert the array to a space-separated string for easier handling
-      SERVICES_LIST=$(IFS=' '; echo "${SERVICES[*]}")
-      
-      echo "Selected services: $SERVICES_LIST"
-      export SERVICES_LIST
-      
-  - label: "Use Processed Services"
-    command: |
-      #!/bin/bash
-      echo "Processing services: $SERVICES_LIST"
-      # Example processing here
+  - block: "Run Config"
+    fields:
+      - select: "Services"
+        multiple: "true"
+        key: "SERVICE"
+        options:
+          - label: "Blueprint service"
+            value: "blueprints"
+          - label: "Authn2 service"
+            value: "authn2"
+
+  - label: "Execute Commands for Selected Service"
+    command: 
+      - bash $SETUP_SCRIPT
+      - echo "next step"

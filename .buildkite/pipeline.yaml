@@ -18,3 +18,4 @@ steps:
     command: 
       - bash $SETUP_SCRIPT
       - echo "next step"
+ 

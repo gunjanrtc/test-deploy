@@ -16,5 +16,5 @@ steps:
 
   - label: "Execute Commands for Selected Service"
     command: 
-      - $SETUP_SCRIPT "$(buildkite-agent meta-data get SERVICE)"
+      - bash $SETUP_SCRIPT "$(buildkite-agent meta-data get SERVICE)"
       - echo "next step"

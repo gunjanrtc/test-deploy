@@ -1,3 +1,7 @@
+env:
+  SETUP_SCRIPT: C:\\buildkite-agent\\builds\\RTC-DLLA48-1\\rtctek\\test-deploy\\.buildkite\\setup.sh
+  PIPELINE_SCRIPT: C:\\buildkite-agent\\builds\\RTC-DLLA48-1\\rtctek\\test-deploy\\.buildkite\\pipeline.sh
+
 steps:
   - block: "Run Config"
     fields:
@@ -10,12 +14,5 @@ steps:
           - label: "Authn2 service"
             value: "authn2"
 
-  - wait
-
-  - label: ":pipeline: Upload and run testing.yml"
-    command: |
-      echo "service=${SERVICE}" > service.env
-      buildkite-agent pipeline upload C:\\buildkite-agent\\builds\\RTC-DLLA48-1\\rtctek\\test-deploy\\.buildkite\\testing.yml --env MY_ENV_VAR="blueprints"
- 
-    env:
-      SERVICES: "authn2"
+  - label: "Execute Commands for Selected Service"
+    command: $SETUP_SCRIPT "$(buildkite-agent meta-data get SERVICE)"

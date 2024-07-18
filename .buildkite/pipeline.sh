@@ -1,22 +1,28 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-# Function to retrieve service names from Buildkite metadata
-get_service_names() {
-    local services=$(buildkite-agent meta-data get SERVICE)
-    echo "$services"
+build() {
+  echo "build of $SERVICE_NAME"
 }
 
-# Example usage of the function
-service_names=$(get_service_names)
-
-# Print service names for verification
-echo "Service names: $service_names"
-
-# Upload service names to Buildkite as pipeline metadata
-buildkite-agent pipeline upload <<EOF
-{
-  "env": {
-    "SERVICE_NAMES": "$service_names"
-  }
+push() {
+  echo "push of $SERVICE_NAME"
 }
-EOF
+
+test() {
+  echo "test of $SERVICE_NAME"
+}
+
+deploy() {
+  env=$1
+  echo "deploy of $SERVICE_NAME $env"
+}
+
+if [[ "$1" == "build" ]]; then
+    build
+elif [[ "$1" == "push" ]]; then
+    push
+elif [[ "$1" == "test" ]]; then
+    test
+elif [[ "$1" == "deploy" ]]; then
+    deploy "$2"
+fi

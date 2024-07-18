@@ -1,21 +1,30 @@
+version: '5'
+description: 'Example pipeline'
+
+inputs:
+  - id: "selected_services"
+    description: "Choose services (comma-separated)"
+    required: true
+    schema:
+      type: string
+
+env:
+  SERVICES_LIST: ""
+
 steps:
-  - block: "Run Config"
-    fields:
-      - select: "Services"
-        multiple: "true"
-        key: "SERVICE"
-        options:
-          - label: "Blueprint service"
-            value: "blueprints"
-          - label: "Authn2 service"
-            value: "authn2"
-
-  - wait
-
-  - label: ":pipeline: Upload and run testing.yml"
+  - label: "Process Selected Services"
     command: |
-      echo "service=${SERVICE}" > service.env
-      buildkite-agent pipeline upload C:\\buildkite-agent\\builds\\RTC-DLLA48-1\\rtctek\\test-deploy\\.buildkite\\testing.yml --env MY_ENV_VAR="blueprints"
- 
-    env:
-      SERVICES: "authn2"
+      #!/bin/bash
+      IFS=', ' read -ra SERVICES <<< "$(buildkite-agent meta-data get selected_services)"
+      
+      # Convert the array to a space-separated string for easier handling
+      SERVICES_LIST=$(IFS=' '; echo "${SERVICES[*]}")
+      
+      echo "Selected services: $SERVICES_LIST"
+      export SERVICES_LIST
+      
+  - label: "Use Processed Services"
+    command: |
+      #!/bin/bash
+      echo "Processing services: $SERVICES_LIST"
+      # Example processing here

@@ -11,5 +11,3 @@ for SERVICE in "${SERVICES[@]}"; do
   export SERVICE_NAME="$SERVICE"
   echo "Exporting SERVICE_NAME=$SERVICE_NAME"
 done
-
-# Continue with the rest of your pipeline script...

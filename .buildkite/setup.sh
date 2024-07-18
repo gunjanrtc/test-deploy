@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "In setup.sh"
-SERVICE_NAME=$1
+SERVICE_NAME=$(buildkite-agent meta-data get SERVICE)
 echo "service name : $SERVICE_NAME"
 case "$SERVICE_NAME" in
   "blueprints")
